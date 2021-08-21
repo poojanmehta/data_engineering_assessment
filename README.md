@@ -33,13 +33,13 @@ CREATE TABLE `customer_data` (
 ```
 ### you can use this values for demo purpose also
 ```sql
-INSERT INTO `customer_data` (`cust_name`, `cust_city`, `country`, `shop_amount`) VALUES  
-('Mayank Shah', 'Ahmedabad', 'INDIA', '2000'),  
-('Poojan Mehta', 'Ahmedabad', 'INDIA', '5000'),  
-('Jack Ryan', 'New York', 'USA', '10000'),  
-('Will Smith', 'Sydney', 'Australia', '5500'),  
-('Tanaka Suzuki', 'Tokyo', 'JAPAN', '2000'),  
-('Paul', 'London', 'UK', '12000');  
+INSERT INTO `customer_data` (`id`, `cust_name`, `cust_city`, `country`, `shop_amount`) VALUES
+(21, 'Mayank Shah', 'Ahmedabad', 'INDIA', '2000'),
+(22, 'Poojan Mehta', 'Ahmedabad', 'INDIA', '5000'),
+(23, 'Jack Ryan', 'New York', 'USA', '10000'),
+(24, 'Will Smith', 'Sydney', 'Australia', '5500'),
+(25, 'Tanaka Suzuki', 'Tokyo', 'JAPAN', '2000'),
+(26, 'Paul', 'London', 'UK', '12000');
 COMMIT;
 ```
 
