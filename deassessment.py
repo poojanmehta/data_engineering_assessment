@@ -41,3 +41,7 @@ for country in all_countries:
     
     # printing all the successful table creation
     print(country, " table created successfully")
+
+# selecting only id, customer name and city columns  
+customer_country = customer_data.iloc[:, 0:3]
+print(customer_country)
