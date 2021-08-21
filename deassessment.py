@@ -42,6 +42,26 @@ for country in all_countries:
     # printing all the successful table creation
     print(country, " table created successfully")
 
-# selecting only id, customer name and city columns  
-customer_country = customer_data.iloc[:, 0:3]
-print(customer_country)
+# insert record in it's country table
+# for loop will iterate n times where n=total unique countries
+for country in all_countries:
+    
+    # filtering records with it's country name
+    country_data = customer_data.loc[customer_data[3] == country]
+    
+    # selecting only id, customer name and city columns  
+    country_data = country_data.iloc[:, 0:3]
+    print(country_data)
+    
+    # query toget all data from it's respective country table
+    countryQuery = "SELECT * FROM {table}".format(table = country)
+    print(countryQuery)
+    cursor.execute(countryQuery)
+    old_country_data = pd.DataFrame(cursor.fetchall())
+    print(old_country_data)
+    
+    # find distinguish data and storing them that are not present in old database
+    distinct_data = country_data[~country_data.isin(old_country_data)].dropna()
+    print(distinct_data)        
+    
+
