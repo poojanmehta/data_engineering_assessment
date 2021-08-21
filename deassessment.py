@@ -1,6 +1,5 @@
 import pandas as pd
 import pymysql
-import pandas as pd
 
 # establishing connection pool for database "customer_country_info"
 connection = pymysql.connect(host = "localhost",
