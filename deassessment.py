@@ -1,5 +1,4 @@
 import pandas as pd
-from sqlalchemy import create_engine
 import pymysql
 import pandas as pd
 
@@ -51,17 +50,26 @@ for country in all_countries:
     
     # selecting only id, customer name and city columns  
     country_data = country_data.iloc[:, 0:3]
-    print(country_data)
     
     # query toget all data from it's respective country table
     countryQuery = "SELECT * FROM {table}".format(table = country)
-    print(countryQuery)
     cursor.execute(countryQuery)
     old_country_data = pd.DataFrame(cursor.fetchall())
-    print(old_country_data)
     
     # find distinguish data and storing them that are not present in old database
     distinct_data = country_data[~country_data.isin(old_country_data)].dropna()
-    print(distinct_data)        
+    # print(distinct_data)
+    
+    # for loop to insert record in it's country table
+    for record in distinct_data.values:
+        
+            print(record)
+            # query for inserting record in country table        
+            create_record = "INSERT INTO `{0}` (id, cust_name, city) VALUES ({1}, '{2}', '{3}')".format(country, record[0], record[1], record[2])
+            cursor.execute(create_record)
+            
+            # commit newly made changes
+            connection.commit()
+            print("Record Entered")
     
 
